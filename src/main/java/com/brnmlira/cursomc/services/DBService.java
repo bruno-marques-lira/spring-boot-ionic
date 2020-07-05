@@ -6,6 +6,7 @@ import java.util.Arrays;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.brnmlira.cursomc.domain.Categoria;
@@ -53,6 +54,8 @@ public class DBService {
 	private PagamentoRepository pagamentoRepository;
 	@Autowired(required=true)
 	private ItemPedidoRepository itemPedidoRepository;
+	@Autowired
+	private BCryptPasswordEncoder pe;
 
 	public void instantiateTestDatabase() throws ParseException{
 		// Instanciando Categorias
@@ -132,14 +135,13 @@ public class DBService {
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
 
 		// Instanciando Clientes
-		Cliente cli1 = new Cliente(null, "Maria Silva", "brunomarqueslira@outlook.com", "50032665024", TipoCliente.PESSOAFISICA);
+		Cliente cli1 = new Cliente(null, "Maria Silva", "brunomarqueslira@outlook.com", "50032665024", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("36283956", "993129762"));
 
-		Cliente cli2 = new Cliente(null, "Bruno Lira", "blira@gmail.com", "75365423000104", TipoCliente.PESSOAJURIDICA);
+		Cliente cli2 = new Cliente(null, "Bruno Lira", "blira@gmail.com", "75365423000104", TipoCliente.PESSOAJURIDICA, pe.encode("123"));
 		cli2.getTelefones().addAll(Arrays.asList("969192721"));
 
-		Cliente cli3 = new Cliente(null, "Patricia Bellemo", "patriciabellemo@gmail.com", "08385323066",
-				TipoCliente.PESSOAFISICA);
+		Cliente cli3 = new Cliente(null, "Patricia Bellemo", "patriciabellemo@gmail.com", "08385323066", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli3.getTelefones().addAll(Arrays.asList("998719177"));
 
 		// Instanciando Endereços
