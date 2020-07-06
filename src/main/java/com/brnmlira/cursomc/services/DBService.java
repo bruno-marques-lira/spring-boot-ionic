@@ -21,6 +21,7 @@ import com.brnmlira.cursomc.domain.PagamentoComCartao;
 import com.brnmlira.cursomc.domain.Pedido;
 import com.brnmlira.cursomc.domain.Produto;
 import com.brnmlira.cursomc.domain.enums.EstadoPagamento;
+import com.brnmlira.cursomc.domain.enums.Perfil;
 import com.brnmlira.cursomc.domain.enums.TipoCliente;
 import com.brnmlira.cursomc.repositories.CategoriaRepository;
 import com.brnmlira.cursomc.repositories.CidadeRepository;
@@ -137,13 +138,16 @@ public class DBService {
 		// Instanciando Clientes
 		Cliente cli1 = new Cliente(null, "Maria Silva", "brunomarqueslira@outlook.com", "50032665024", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("36283956", "993129762"));
-
+		cli1.addPerfil(Perfil.CLIENTE);
+		
 		Cliente cli2 = new Cliente(null, "Bruno Lira", "blira@gmail.com", "75365423000104", TipoCliente.PESSOAJURIDICA, pe.encode("123"));
 		cli2.getTelefones().addAll(Arrays.asList("969192721"));
-
+		cli2.addPerfil(Perfil.ADMIN);
+		
 		Cliente cli3 = new Cliente(null, "Patricia Bellemo", "patriciabellemo@gmail.com", "08385323066", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli3.getTelefones().addAll(Arrays.asList("998719177"));
-
+		cli3.addPerfil(Perfil.ADMIN);
+		
 		// Instanciando Endereços
 		Endereco end1 = new Endereco(null, "Rua das Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
 		Endereco end2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "39777012", cli1, c2);
