@@ -1,17 +1,13 @@
 package com.brnmlira.cursomc.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.brnmlira.cursomc.domain.Categoria;
 import com.brnmlira.cursomc.domain.Produto;
-import com.brnmlira.cursomc.repositories.CategoriaRepository;
+import com.brnmlira.cursomc.dto.ProdutoDTO;
 import com.brnmlira.cursomc.repositories.ProdutoRepository;
 import com.brnmlira.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -19,20 +15,14 @@ import com.brnmlira.cursomc.services.exceptions.ObjectNotFoundException;
 public class ProdutoService {
 
 	@Autowired
-	private ProdutoRepository repo;
-	
-	@Autowired
-	private CategoriaRepository categoriaRepository;
-	
+	private ProdutoRepository ProdutoRepository;
 
 	public Produto find(Integer id) {
-		Optional<Produto> obj = repo.findById(id);
+		Optional<Produto> obj = ProdutoRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 	
-	public Page<Produto> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction){
-		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-		List<Categoria> categorias = categoriaRepository.findAllById(ids);
-		return repo.findDistinctByNomeContainingAndCategoriasIn(nome, categorias, pageRequest);
+	public Produto fromDto(ProdutoDTO objDto) {
+		return new Produto(objDto.getId(), objDto.getNome(), objDto.getPreco());
 	}
 }
