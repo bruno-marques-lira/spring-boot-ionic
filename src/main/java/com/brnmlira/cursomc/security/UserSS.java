@@ -10,18 +10,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.brnmlira.cursomc.domain.enums.Perfil;
 
-public class SSUser implements UserDetails{
+public class UserSS implements UserDetails {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
 	private String email;
 	private String senha;
 	private Collection<? extends GrantedAuthority> authorities;
-	
-	public SSUser() {
+
+	public UserSS() {
 	}
-	
-	public SSUser(Integer id, String email, String senha, Set<Perfil> perfis) {
+
+	public UserSS(Integer id, String email, String senha, Set<Perfil> perfis) {
+		super();
 		this.id = id;
 		this.email = email;
 		this.senha = senha;
@@ -31,9 +32,9 @@ public class SSUser implements UserDetails{
 	public Integer getId() {
 		return id;
 	}
-	
+
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities(){
+	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
 	}
 
@@ -59,7 +60,7 @@ public class SSUser implements UserDetails{
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return false;
+		return true;
 	}
 
 	@Override

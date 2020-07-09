@@ -16,7 +16,6 @@ import com.brnmlira.cursomc.repositories.CategoriaRepository;
 import com.brnmlira.cursomc.services.exceptions.DataIntegrityException;
 import com.brnmlira.cursomc.services.exceptions.ObjectNotFoundException;
 
-
 @Service
 public class CategoriaService {
 
