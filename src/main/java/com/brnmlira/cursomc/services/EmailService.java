@@ -1,7 +1,5 @@
 package com.brnmlira.cursomc.services;
 
-import javax.mail.internet.MimeMessage;
-
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +13,7 @@ public interface EmailService {
 
 	void sendEmail(SimpleMailMessage msg);
 
-	void sendOrderConfirmationHtmlEmail(Pedido obj);
+	void sendNewPasswordEmail(Cliente cliente, String newPass);
 
-	void sendHtmlEmail(MimeMessage msg);
-	
-	void sendNewPasswordEmail(Cliente cliente, String newPass) throws Exception;
+	void sendOrderConfirmationHtmlEmail(Pedido obj);
 }
