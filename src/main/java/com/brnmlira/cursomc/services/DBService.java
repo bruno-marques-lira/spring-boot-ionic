@@ -137,17 +137,17 @@ public class DBService {
 
 		// Instanciando Clientes
 		// Provisório
-		Cliente cli1 = new Cliente(null, "Maria Silva", "brunomarqueslira@outlook.com", "50032665024", TipoCliente.PESSOAFISICA, pe.encode("123"), null);
+		Cliente cli1 = new Cliente(null, "Maria Silva", "brunomarqueslira@outlook.com", "50032665024", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("36283956", "993129762"));
 		cli1.addPerfil(Perfil.CLIENTE);
 		
 		// Provisório
-		Cliente cli2 = new Cliente(null, "Bruno Lira", "blira@gmail.com", "75365423000104", TipoCliente.PESSOAJURIDICA, pe.encode("123"), null);
+		Cliente cli2 = new Cliente(null, "Bruno Lira", "blira@gmail.com", "75365423000104", TipoCliente.PESSOAJURIDICA, pe.encode("123"));
 		cli2.getTelefones().addAll(Arrays.asList("969192721"));
 		cli2.addPerfil(Perfil.ADMIN);
 		
 		// Provisório
-		Cliente cli3 = new Cliente(null, "Patricia Bellemo", "patriciabellemo@gmail.com", "08385323066", TipoCliente.PESSOAFISICA, pe.encode("123"), null);
+		Cliente cli3 = new Cliente(null, "Patricia Bellemo", "patriciabellemo@gmail.com", "08385323066", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli3.getTelefones().addAll(Arrays.asList("998719177"));
 		cli3.addPerfil(Perfil.ADMIN);
 		
